@@ -21,35 +21,41 @@ btnEnviar.addEventListener('click', function(e){
     let altura = parseFloat(CaixaAltura.value)
     let imc = (peso / (altura * altura)).toFixed(1)
 
-    console.log(nome)
-    console.log(idade)
-    console.log(peso)
-    console.log(altura)
-    console.log(imc)
+    // verifica se peso e altura são acima de zero caso nao seja mostra um alert 
+    if (altura >= 0 && peso >= 0) {
+        console.log(nome)
+        console.log(idade)
+        console.log(peso)
+        console.log(altura)
+        console.log(imc)
 
-    CaixaImc.value = imc
-    let sit = situacaoPeso(imc)
-    aviso.textContent = sit
+        CaixaImc.value = imc
+        let sit = situacaoPeso(imc)
+        aviso.innerHTML = sit
 
-    let pessoa = {
-        nome    : nome,
-        idade   : idade,
-        peso    : peso,
-        altura  : altura,
-        imc     : imc
+        let pessoa = {
+            nome    : nome,
+            idade   : idade,
+            peso    : peso,
+            altura  : altura,
+            imc     : imc
+        }
+
+        dados[1].textContent = nome 
+        dados[2].textContent = idade + ' anos'
+        dados[3].textContent = peso + ' kg'
+        dados[4].textContent = altura + ' m'
+        dados[5].textContent = 'Imc: '+ imc + ' ' + sit
+    }else {
+        alert('coloque valores acima de zero em peso e altura')
     }
 
-    dados[1].textContent = nome 
-    dados[2].textContent = idade + ' anos'
-    dados[3].textContent = peso + ' kg'
-    dados[4].textContent = altura + ' m'
-    dados[5].textContent = 'Imc: '+ imc + ' ' + sit
-    
     
     e.preventDefault()
 })
 
 function situacaoPeso(imc){
+
     let situacao = ''
     if (imc >= 40){
         situacao = 'Obesidade grau III'

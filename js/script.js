@@ -13,6 +13,7 @@ let aviso = document.querySelector('#aviso')
 // botao
 
 let btnEnviar = document.querySelector('#btnEnviar')
+let btnLimpar = document.querySelector('#btnLimpar')
 
 btnEnviar.addEventListener('click', function(e){
     let nome = CaixaNome.value
@@ -52,6 +53,22 @@ btnEnviar.addEventListener('click', function(e){
 
     
     e.preventDefault()
+})
+
+btnLimpar.addEventListener('click', function(event){
+    
+    formulario.reset()
+    console.log('resetado dados')
+    event.preventDefault()
+
+    dados[1].textContent = ''
+    dados[2].textContent = ''
+    dados[3].textContent = ''
+    dados[4].textContent = ''
+    dados[5].textContent = ''
+
+    aviso.innerHTML = ''
+
 })
 
 function situacaoPeso(imc){
